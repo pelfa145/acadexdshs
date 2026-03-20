@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSHS Acadex 2026 - Premier Research Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Background Decoration -->
+    <div class="bg-decoration"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar container">
+            <div class="nav-logo" onclick="showSection('home')">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-main">Acadex</span>
+                    <span class="logo-sub">DSHS Research</span>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+                <li><a href="#browse" class="nav-link" data-section="browse">Library</a></li>
+                <li><a href="#upload" class="nav-link" data-section="upload">Publish</a></li>
+                <li><a href="#login" class="nav-link btn-login" data-section="login">Sign In</a></li>
+            </ul>
+
+            <div class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="section active-section">
+            <div class="hero-container container">
+                <div class="hero-content">
+                    <span class="badge-new">New for 2026 Academic Year</span>
+                    <h1>Discover the Future of <br><span class="text-gradient">Student Innovation</span></h1>
+                    <p class="hero-desc">The official digital archive for Dumingag Senior High School research. Access peer-reviewed papers, capstone projects, and academic studies from STEM, ABM, HUMSS, GAS, and ICT strands.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary btn-lg" onclick="showSection('browse')">
+                            <i class="fas fa-search"></i> Explore Library
+                        </button>
+                        <button class="btn btn-outline btn-lg" onclick="showSection('upload')">
+                            <i class="fas fa-upload"></i> Submit Paper
+                        </button>
+                    </div>
+                    
+                    <!-- Stats Counter -->
+                    <div class="stats-row">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="150">0</span>
+                            <span class="stat-label">Papers Archived</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="5">0</span>
+                            <span class="stat-label">Academic Strands</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="1200">0</span>
+                            <span class="stat-label">Monthly Readers</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-card card-1">
+                        <i class="fas fa-atom"></i>
+                        <div class="card-lines">
+                            <span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fas fa-dna"></i>
+                        <div class="card-lines">
+                            <span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="hero-circle"></div>
+                </div>
+            </div>
+
+            <!-- Featured Section -->
+            <div class="featured-section container">
+                <div class="section-header">
+                    <h2>Featured Research</h2>
+                    <a href="#" onclick="showSection('browse'); return false;" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="featured-grid" id="featuredGrid">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Login Section -->
+        <section id="login" class="section hidden">
+            <div class="container auth-container">
+                <div class="auth-card">
+                    <div class="auth-header">
+                        <div class="auth-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h2>Researcher Portal</h2>
+                        <p>Access your dashboard and submit papers</p>
+                    </div>
+                    <form id="loginForm">
+                        <div class="form-group floating-label">
+                            <input type="email" id="email" required placeholder=" " autocomplete="email">
+                            <label for="email">School Email Address</label>
+                            <i class="fas fa-envelope input-icon"></i>
+                        </div>
+                        <div class="form-group floating-label">
+                            <input type="password" id="password" required placeholder=" " autocomplete="current-password">
+                            <label for="password">Password</label>
+                            <i class="fas fa-lock input-icon"></i>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                    </form>
+                    <div class="auth-footer">
+                        <p>Restricted to Dumingag Senior High School Faculty & Students</p>
+                        <a href="#" class="forgot-pass">Forgot credentials?</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Browse Section -->
+        <section id="browse" class="section hidden">
+            <div class="container">
+                <div class="browse-header">
+                    <div class="header-text">
+                        <h2>Research Library</h2>
+                        <p>Browse collection across all academic strands</p>
+                    </div>
+                    <div class="view-toggles">
+                        <button class="view-btn active" data-view="grid"><i class="fas fa-th-large"></i></button>
+                        <button class="view-btn" data-view="list"><i class="fas fa-list"></i></button>
+                    </div>
+                </div>
+                
+                <!-- Search & Filter Bar -->
+                <div class="search-wrapper">
+                    <div class="search-bar">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="searchInput" placeholder="Search title, abstract, or keywords..." autocomplete="off">
+                    </div>
+                    <div class="filter-group">
+                        <div class="custom-select">
+                            <select id="strandFilter" onchange="filterPapers()">
+                                <option value="">All Strands</option>
+                                <option value="STEM">STEM</option>
+                                <option value="HUMSS">HUMSS</option>
+                                <option value="ICT">ICT</option>
+                                <option value="ABM">ABM</option>
+                                <option value="GAS">GAS</option>
+                            </select>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="custom-select">
+                            <select id="sortFilter" onchange="sortPapers()">
+                                <option value="newest">Newest First</option>
+                                <option value="oldest">Oldest First</option>
+                                <option value="az">Title (A-Z)</option>
+                            </select>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Papers Grid -->
+                <div id="papersGrid" class="papers-grid">
+                    <!-- Papers will be dynamically loaded here -->
+                </div>
+                
+                <div id="noResults" class="no-results hidden">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23cbd5e1'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3C/svg%3E" alt="No results">
+                    <h3>No papers found</h3>
+                    <p>Try adjusting your search terms or filters</p>
+                    <button class="btn btn-secondary" onclick="resetFilters()">Clear Filters</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upload Section -->
+        <section id="upload" class="section hidden">
+            <div class="container">
+                <div class="upload-container">
+                    <div class="upload-header">
+                        <h2>Submit Research</h2>
+                        <p>Contribute to the Dumingag Senior High School academic repository</p>
+                    </div>
+                    
+                    <form id="uploadForm" class="upload-form">
+                        <div class="form-section">
+                            <h3><i class="fas fa-info-circle"></i> Basic Information</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="paperTitle">Research Title</label>
+                                    <input type="text" id="paperTitle" required placeholder="Full academic title">
+                                </div>
+                                <div class="form-group">
+                                    <label for="authorName">Primary Author</label>
+                                    <input type="text" id="authorName" required placeholder="Last Name, First Name M.I.">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row three-col">
+                                <div class="form-group">
+                                    <label for="strand">Strand</label>
+                                    <div class="custom-select">
+                                        <select id="strand" required>
+                                            <option value="">Select...</option>
+                                            <option value="STEM">STEM</option>
+                                            <option value="HUMSS">HUMSS</option>
+                                            <option value="ICT">ICT</option>
+                                            <option value="ABM">ABM</option>
+                                            <option value="GAS">GAS</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="year">Academic Year</label>
+                                    <input type="text" id="year" required placeholder="e.g., 2025-2026" value="2025-2026">
+                                </div>
+                                <div class="form-group">
+                                    <label for="category">Category</label>
+                                    <div class="custom-select">
+                                        <select id="category">
+                                            <option value="3is-capstone">3I's Capstone</option>
+                                            <option value="practical-research-1">Practical Research I</option>
+                                            <option value="practical-research-2">Practical Research II</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3><i class="fas fa-align-left"></i> Content Details</h3>
+                            <div class="form-group">
+                                <label for="abstract">Abstract</label>
+                                <textarea id="abstract" rows="6" required placeholder="Paste the full abstract here (max 500 words)..."></textarea>
+                                <div class="char-count">0/500 words</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="keywords">Keywords</label>
+                                <div class="keywords-input-container">
+                                    <input type="text" id="keywords" required placeholder="Press 'Enter' to add tags (e.g. machine learning)">
+                                    <div class="keywords-tags" id="keywordTags"></div>
+                                </div>
+                                <small class="hint">Separate keywords with commas or Enter</small>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3><i class="fas fa-file-pdf"></i> Document</h3>
+                            <div class="file-upload-wrapper">
+                                <input type="file" id="pdfFile" accept=".pdf" required>
+                                <div class="file-upload-content">
+                                    <div class="upload-icon">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                    </div>
+                                    <div class="upload-text">
+                                        <span class="main-text">Click to upload or drag and drop</span>
+                                        <span class="sub-text">PDF format only (Max 10MB)</span>
+                                    </div>
+                                    <div id="fileNameDisplay" class="file-name hidden"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" onclick="showSection('home')">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Publish Paper</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Paper View Modal -->
+        <div id="paperModal" class="modal">
+            <div class="modal-content glass-effect">
+                <div class="modal-header">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <div class="modal-badges" id="modalBadges"></div>
+                </div>
+                <div id="modalBody" class="modal-body-scroll">
+                    <!-- Paper details loaded here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo-text">
+                        <span class="logo-main">Acadex</span>
+                    </div>
+                    <p>Empowering the next generation of researchers and innovators at Dumingag Senior High School.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Platform</h4>
+                        <a href="#" onclick="showSection('home')">Home</a>
+                        <a href="#" onclick="showSection('browse')">Library</a>
+                        <a href="#" onclick="showSection('upload')">Submit</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Resources</h4>
+                        <a href="#">Guidelines</a>
+                        <a href="#">Citation Format</a>
+                        <a href="#">Ethics Policy</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Contact</h4>
+                        <a href="#">Support</a>
+                        <a href="#">Faculty</a>
+                        <a href="#">Report Issue</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 DSHS Acadex. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
