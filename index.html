@@ -33,6 +33,7 @@
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
                 <li><a href="#browse" class="nav-link" data-section="browse">Library</a></li>
+                <li><a href="#rankings" class="nav-link" data-section="rankings">Rankings</a></li>
                 <li><a href="#upload" class="nav-link" data-section="upload">Publish</a></li>
                 <li><a href="#login" class="nav-link btn-login" data-section="login">Sign In</a></li>
             </ul>
@@ -198,7 +199,101 @@
             </div>
         </section>
 
-        <!-- Upload Section -->
+        <!-- Rankings Section -->
+        <section id="rankings" class="section hidden">
+            <div class="container">
+                <div class="rankings-header">
+                    <h2>Research Rankings</h2>
+                    <p>Celebrating excellence in student research</p>
+                </div>
+                
+                <div class="rankings-tabs">
+                    <button class="tab-btn active" data-tab="monthly">Top Research of the Month</button>
+                    <button class="tab-btn" data-tab="viewed">Most Viewed</button>
+                    <button class="tab-btn" data-tab="teachers">Teacher's Choice</button>
+                </div>
+                
+                <div class="rankings-content">
+                    <!-- Monthly Top -->
+                    <div id="monthly-tab" class="tab-content active">
+                        <div class="ranking-cards">
+                            <div class="ranking-card featured">
+                                <div class="rank-badge gold">1</div>
+                                <div class="paper-info">
+                                    <h3>Machine Learning Applications in Educational Assessment</h3>
+                                    <p class="author">Maria Santos • ICT</p>
+                                    <div class="paper-stats">
+                                        <span><i class="fas fa-eye"></i> 350 views</span>
+                                        <span><i class="fas fa-download"></i> 142 downloads</span>
+                                        <span><i class="fas fa-star"></i> 4.8 rating</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="ranking-card">
+                                <div class="rank-badge silver">2</div>
+                                <div class="paper-info">
+                                    <h3>The Impact of Social Media on Mental Health Among Adolescents</h3>
+                                    <p class="author">John Reyes • HUMSS</p>
+                                    <div class="paper-stats">
+                                        <span><i class="fas fa-eye"></i> 210 views</span>
+                                        <span><i class="fas fa-download"></i> 89 downloads</span>
+                                        <span><i class="fas fa-star"></i> 4.6 rating</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="ranking-card">
+                                <div class="rank-badge bronze">3</div>
+                                <div class="paper-info">
+                                    <h3>Renewable Energy Solutions for Sustainable Communities</h3>
+                                    <p class="author">Sarah Chen • STEM</p>
+                                    <div class="paper-stats">
+                                        <span><i class="fas fa-eye"></i> 180 views</span>
+                                        <span><i class="fas fa-download"></i> 75 downloads</span>
+                                        <span><i class="fas fa-star"></i> 4.7 rating</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Most Viewed -->
+                    <div id="viewed-tab" class="tab-content">
+                        <div class="ranking-cards">
+                            <div class="ranking-card featured">
+                                <div class="rank-badge views">👁️</div>
+                                <div class="paper-info">
+                                    <h3>Machine Learning Applications in Educational Assessment</h3>
+                                    <p class="author">Maria Santos • ICT</p>
+                                    <div class="paper-stats">
+                                        <span><i class="fas fa-eye"></i> 350 views</span>
+                                        <span><i class="fas fa-download"></i> 142 downloads</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Teacher's Choice -->
+                    <div id="teachers-tab" class="tab-content">
+                        <div class="ranking-cards">
+                            <div class="ranking-card featured">
+                                <div class="rank-badge teacher">🏆</div>
+                                <div class="paper-info">
+                                    <h3>Machine Learning Applications in Educational Assessment</h3>
+                                    <p class="author">Maria Santos • ICT</p>
+                                    <div class="paper-stats">
+                                        <span><i class="fas fa-trophy"></i> Faculty Approved</span>
+                                        <span><i class="fas fa-star"></i> 4.8 rating</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section id="upload" class="section hidden">
             <div class="container">
                 <div class="upload-container">
@@ -308,6 +403,62 @@
                 <div id="modalBody" class="modal-body-scroll">
                     <!-- Paper details loaded here -->
                 </div>
+                
+                <!-- Comments Section - Collapsible -->
+                <div class="comments-section collapsed">
+                    <div class="comments-toggle" onclick="toggleComments()">
+                        <h3><i class="fas fa-comments"></i> Academic Feedback</h3>
+                        <div class="toggle-actions">
+                            <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); showCommentForm()">
+                                <i class="fas fa-plus"></i> Add
+                            </button>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="comments-content">
+                        <!-- Comment Form -->
+                        <div id="commentForm" class="comment-form hidden">
+                            <div class="feedback-types-compact">
+                                <label class="feedback-type">
+                                    <input type="radio" name="feedbackType" value="clarity" checked>
+                                    <span>🔍 Clarity</span>
+                                </label>
+                                <label class="feedback-type">
+                                    <input type="radio" name="feedbackType" value="methodology">
+                                    <span>🔬 Method</span>
+                                </label>
+                                <label class="feedback-type">
+                                    <input type="radio" name="feedbackType" value="creativity">
+                                    <span>💡 Creative</span>
+                                </label>
+                            </div>
+                            
+                            <div class="form-group compact">
+                                <textarea id="commentText" placeholder="Your feedback..." rows="2"></textarea>
+                            </div>
+                            
+                            <div class="comment-form-footer">
+                                <div class="star-rating" id="starRating">
+                                    <i class="fas fa-star" data-rating="1"></i>
+                                    <i class="fas fa-star" data-rating="2"></i>
+                                    <i class="fas fa-star" data-rating="3"></i>
+                                    <i class="fas fa-star" data-rating="4"></i>
+                                    <i class="fas fa-star" data-rating="5"></i>
+                                </div>
+                                <div class="comment-actions">
+                                    <button class="btn btn-text btn-sm" onclick="hideCommentForm()">Cancel</button>
+                                    <button class="btn btn-primary btn-sm" onclick="submitComment()">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Comments List -->
+                        <div id="commentsList" class="comments-list compact">
+                            <!-- Comments will be loaded here -->
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -353,6 +504,19 @@
             </div>
         </div>
     </footer>
+
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Project Configuration
+        const SUPABASE_URL = "https://kglxidnicvxtnwhvdigu.supabase.co";
+        const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtnbHhpZG5pY3Z4dG53aHZkaWd1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwMTQ2NDIsImV4cCI6MjA4OTU5MDY0Mn0.epA9uxwveBSUlxTMNsNPpOZyrM4vLphcVV0a3xXzuag";
+
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        window.supabaseClient = supabase;
+        
+        console.log("Supabase Initialized");
+    </script>
 
     <script src="script.js"></script>
 </body>

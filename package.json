@@ -1,15 +1,16 @@
 {
   "name": "dshs-acadex-research-platform",
-  "version": "1.0.0",
-  "description": "Academic Research Platform for School Papers",
+  "version": "2.0.0",
+  "description": "Academic Research Platform for School Papers - Firebase Edition",
+  "main": "index.html",
   "scripts": {
-    "dev": "live-server --port=3000",
-    "build": "echo 'Static site - no build needed'"
+    "dev": "live-server"
   },
+  "dependencies": {},
   "devDependencies": {
     "live-server": "^1.2.2"
   },
-  "keywords": ["academic", "research", "education", "papers", "platform"],
+  "keywords": ["academic", "research", "education", "papers", "platform", "firebase"],
   "author": "Acadex Team",
   "license": "MIT"
 }
