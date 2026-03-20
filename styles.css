@@ -52,6 +52,33 @@
     box-sizing: border-box;
 }
 
+/* Remove tap highlight on mobile */
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Allow text selection for input elements */
+input, textarea, select {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+/* Allow text selection for paper content */
+.paper-abstract, .paper-keywords, .modal-body-scroll {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -1162,8 +1189,8 @@ ul { list-style: none; }
 
     .hamburger { display: flex; }
 
-    /* Hero */
-    .hero-content h1 { font-size: 2.8rem; }
+    /* Hero Mobile Adjustments */
+    .hero-content h1 { font-size: 2.5rem; }
     
     .hero-buttons {
         flex-direction: column;
@@ -1184,6 +1211,51 @@ ul { list-style: none; }
         height: 1px;
     }
 
+    /* Fixed Floating Cards */
+    .hero-visual {
+        height: 260px;
+        margin-top: 40px;
+        margin-bottom: 120px; /* Huge buffer to prevent overlap */
+        overflow: visible;
+    }
+
+    .hero-circle {
+        width: 220px;
+        height: 220px;
+    }
+
+    .floating-card {
+        width: 130px;
+        padding: 12px;
+        border-radius: 16px;
+        animation: float-mobile 6s ease-in-out infinite;
+    }
+
+    .floating-card i {
+        font-size: 1.2rem;
+        padding: 8px;
+        margin-bottom: 8px;
+    }
+
+    .card-lines span { height: 4px; margin-bottom: 6px; }
+
+    .card-1 {
+        top: -10px;
+        right: 10px;
+        left: auto;
+    }
+
+    .card-2 {
+        bottom: 25px; /* Moved up */
+        left: 20px;
+        width: 120px;
+    }
+}
+
+@keyframes float-mobile {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
     /* Grids & Layout */
     .form-row, .three-col { grid-template-columns: 1fr; }
     
